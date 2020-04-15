@@ -2,7 +2,7 @@ require "./2d"
 require "./3d"
 require "./4d"
 
-class OpenSimplexNoise
+struct OpenSimplexNoise
   def initialize(seed : Int64 = 0_i64)
     # Initiate the class and generate permutation arrays from a seed number.
 

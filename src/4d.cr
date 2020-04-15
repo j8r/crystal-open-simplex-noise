@@ -1,6 +1,6 @@
 require "./constants"
 
-class OpenSimplexNoise
+struct OpenSimplexNoise
   private def extrapolate(xsb : Int32, ysb : Int32, zsb : Int32, wsb : Int32, dx : Float64, dy : Float64, dz : Float64, dw : Float64)
     index = @perm[(@perm[(@perm[(@perm[xsb & 0xFF] + ysb) & 0xFF] + zsb) & 0xFF] + wsb) & 0xFF] & 0xFC
     g1, g2, g3, g4 = GRADIENTS_4D[(index..index + 3)]

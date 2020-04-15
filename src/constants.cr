@@ -1,10 +1,10 @@
-class OpenSimplexNoise
-  private STRETCH_CONSTANT_2D = -0.21132486540518708 # (1/Math.sqrt(2+1)-1)/2
-  private SQUISH_CONSTANT_2D  =   0.3660254037844386 # (Math.sqrt(2+1)-1)/2
-  private STRETCH_CONSTANT_3D = -1.0 / 6             # (1/Math.sqrt(3+1)-1)/3
-  private SQUISH_CONSTANT_3D  = 1.0 / 3              # (Math.sqrt(3+1)-1)/3
-  private STRETCH_CONSTANT_4D = -0.13819660112501053 # (1/Math.sqrt(4+1)-1)/4
-  private SQUISH_CONSTANT_4D  =  0.30901699437494745 # (Math.sqrt(4+1)-1)/4
+struct OpenSimplexNoise
+  private SQUISH_CONSTANT_2D  = (Math.sqrt(2 + 1) - 1) / 2
+  private SQUISH_CONSTANT_3D  = (Math.sqrt(3 + 1) - 1) / 3
+  private SQUISH_CONSTANT_4D  = (Math.sqrt(4 + 1) - 1) / 4
+  private STRETCH_CONSTANT_2D = (1 / Math.sqrt(2 + 1) - 1) / 2
+  private STRETCH_CONSTANT_3D = (1 / Math.sqrt(3 + 1) - 1) / 3
+  private STRETCH_CONSTANT_4D = (1 / Math.sqrt(4 + 1) - 1) / 4
 
   private NORM_CONSTANT_2D =  47
   private NORM_CONSTANT_3D = 103
