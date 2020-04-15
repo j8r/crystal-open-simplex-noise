@@ -1,7 +1,10 @@
 # Open Simplex Noise
-[![Build Status](https://travis-ci.org/doughsay/crystal-open-simplex-noise.svg?branch=master)](https://travis-ci.org/doughsay/crystal-open-simplex-noise)
+
+[![Build Status](https://cloud.drone.io/api/badges/j8r/crystal-open-simplex-noise/status.svg)](https://cloud.drone.io/j8r/crystal-open-simplex-noise)
 
 This is an implementation of 2D, 3D, and 4D open simplex noise in crystal.
+
+Original work by [doughsay](https://github.com/doughsay/crystal-open-simplex-noise).
 
 ## Installation
 
@@ -10,9 +13,7 @@ Add this to your application's `shard.yml`:
 ```yml
 dependencies:
   open-simplex-noise:
-    github: doughsay/crystal-open-simplex-noise
-    version: "~> 1.0"
-  ...
+    github: j8r/crystal-open-simplex-noise
 ```
 
 ## Usage
@@ -34,6 +35,10 @@ noise.generate(1.0, 2.0)
 #=> -0.08284024020120388
 ```
 
+## Documentation
+
+https://j8r.github.io/crystal-open-simplex-noise
+
 ## Examples
 
 2D Noise:
@@ -48,21 +53,11 @@ noise.generate(1.0, 2.0)
 
 ![3d-noise](examples/output/noise4d.png)
 
-## Contributing
-
-1. Fork it ( https://github.com/doughsay/open-simplex-noise/fork )
-2. Create your feature branch (git checkout -b my-new-feature)
-3. Commit your changes (git commit -am 'Add some feature')
-4. Push to the branch (git push origin my-new-feature)
-5. Create a new Pull Request
-
-## Contributors
-
-- [doughsay](https://github.com/doughsay) Chris Dosé - creator, maintainer
-
 ## Credits
 
-This is mostly just a transliteration of the python version from here: https://github.com/lmas/opensimplex, which itself is a transliteration of Kurt Spencer's original code (released to the public domain).
+[doughsay](https://github.com/doughsay) Chris Dosé - original creator
+
+This is mostly just a transliteration of the Python version from here: https://github.com/lmas/opensimplex, which itself is a transliteration of Kurt Spencer's original code (released to the public domain).
 
 ## License
 
