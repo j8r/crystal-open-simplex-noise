@@ -5,9 +5,8 @@ class OpenSimplexNoise
     g1 * dx + g2 * dy + g3 * dz + g4 * dw
   end
 
-  def generate(x, y, z, w)
-    # Generate 4D OpenSimplex noise from X,Y,Z,W coordinates.
-
+  # Generate 4D OpenSimplex noise from X,Y,Z,W coordinates.
+  def generate(x : Float64, y : Float64, z : Float64, w : Float64) : Float64
     # Place input coordinates on simplectic honeycomb.
     stretch_offset = (x + y + z + w) * STRETCH_CONSTANT_4D
     xs = x + stretch_offset

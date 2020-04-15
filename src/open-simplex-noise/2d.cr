@@ -5,9 +5,8 @@ class OpenSimplexNoise
     g1 * dx + g2 * dy
   end
 
+  # Generate 2D OpenSimplex noise from X,Y coordinates.
   def generate(x : Float64, y : Float64)
-    # Generate 2D OpenSimplex noise from X,Y coordinates.
-
     # Place input coordinates onto grid.
     stretch_offset = (x + y) * STRETCH_CONSTANT_2D
     xs = x + stretch_offset

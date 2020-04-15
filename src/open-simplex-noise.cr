@@ -11,14 +11,14 @@ class OpenSimplexNoise
     @perm_grad_index_3d = Array(Int32).new(256, 0)
 
     source = (0...256).to_a
-    3.times { seed = seed * 6364136223846793005 + 1442695040888963407 }
+    3.times { seed = seed &* 6364136223846793005 &+ 1442695040888963407 }
 
     source.reverse.each do |i|
-      seed = seed * 6364136223846793005 + 1442695040888963407
+      seed = seed &* 6364136223846793005 &+ 1442695040888963407
       r = (seed + 31) % (i + 1)
       r += i + 1 if r < 0
       @perm[i] = source[r]
-      @perm_grad_index_3d[i] = (@perm[i] % (GRADIENTS_3D.size / 3)) * 3
+      @perm_grad_index_3d[i] = (@perm[i] % (GRADIENTS_3D.size // 3)) * 3
       source[r] = source[i]
     end
   end

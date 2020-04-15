@@ -31,8 +31,7 @@ noise = OpenSimplexNoise.new(12345_i64)
 Use the `generate` method, passing in either 2, 3, or 4 `Float64`s to generate noise:
 
 ```crystal
-noise.generate(1.0, 2.0)
-#=> -0.08284024020120388
+noise.generate(1.0, 2.0) #=> -0.08284024020120388
 ```
 
 ## Documentation
