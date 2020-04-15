@@ -4,9 +4,6 @@ require "./4d"
 
 struct OpenSimplexNoise
   def initialize(seed : Int64 = 0_i64)
-    # Prevents overflows
-    seed = seed.to_u64
-  
     # Initiate the class and generate permutation arrays from a seed number.
 
     # Initializes the class using a permutation array generated from a 64-bit seed.
@@ -28,7 +25,7 @@ struct OpenSimplexNoise
     end
   end
 
-  private def new_seed(seed : UInt64) : UInt64
+  private def new_seed(seed : Int64) : Int64
     seed &* 6364136223846793005 &+ 1442695040888963407
   end
 end
