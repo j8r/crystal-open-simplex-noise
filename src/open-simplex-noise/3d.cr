@@ -57,7 +57,7 @@ class OpenSimplexNoise
       # Now we determine the two lattice points not part of the tetrahedron that may contribute.
       # This depends on the closest two tetrahedral vertices, including (0,0,0)
       wins = 1 - in_sum
-      if wins > a_score || wins > b_score # (0,0,0) is one of the closest two tetrahedral vertices.
+      if wins > a_score || wins > b_score         # (0,0,0) is one of the closest two tetrahedral vertices.
         c = b_score > a_score ? b_point : a_point # Our other closest vertex is the closest out of a and b.
 
         if (c & 0x01) == 0
@@ -94,7 +94,7 @@ class OpenSimplexNoise
           zsv_ext0 = zsv_ext1 = zsb + 1
           dz_ext0 = dz_ext1 = dz0 - 1
         end
-      else # (0,0,0) is not one of the closest two tetrahedral vertices.
+      else                      # (0,0,0) is not one of the closest two tetrahedral vertices.
         c = (a_point | b_point) # Our two extra vertices are determined by the closest two.
 
         if (c & 0x01) == 0
@@ -185,7 +185,7 @@ class OpenSimplexNoise
       # Now we determine the two lattice points not part of the tetrahedron that may contribute.
       # This depends on the closest two tetrahedral vertices, including (1,1,1)
       wins = 3 - in_sum
-      if wins < a_score || wins < b_score # (1,1,1) is one of the closest two tetrahedral vertices.
+      if wins < a_score || wins < b_score         # (1,1,1) is one of the closest two tetrahedral vertices.
         c = b_score < a_score ? b_point : a_point # Our other closest vertex is the closest out of a and b.
 
         if (c & 0x01) != 0
@@ -222,7 +222,7 @@ class OpenSimplexNoise
           zsv_ext0 = zsv_ext1 = zsb
           dz_ext0 = dz_ext1 = dz0 - 3 * SQUISH_CONSTANT_3D
         end
-      else # (1,1,1) is not one of the closest two tetrahedral vertices.
+      else                      # (1,1,1) is not one of the closest two tetrahedral vertices.
         c = (a_point & b_point) # Our two extra vertices are determined by the closest two.
 
         if (c & 0x01) != 0

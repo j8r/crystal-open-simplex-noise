@@ -70,7 +70,7 @@ class OpenSimplexNoise
       # Now we determine the three lattice pos not part of the pentachoron that may contribute.
       # This depends on the closest two pentachoron vertices, including (0,0,0,0)
       uins = 1 - in_sum
-      if uins > a_score || uins > b_score # (0,0,0,0) is one of the closest two pentachoron vertices.
+      if uins > a_score || uins > b_score   # (0,0,0,0) is one of the closest two pentachoron vertices.
         c = b_score > a_score ? b_po : a_po # Our other closest vertex is the closest out of a and b.
         if (c & 0x01) == 0
           xsv_ext0 = xsb - 1
@@ -92,7 +92,6 @@ class OpenSimplexNoise
             ysv_ext1 -= 1
             dy_ext1 += 1
           end
-
         else
           ysv_ext0 = ysv_ext1 = ysv_ext2 = ysb + 1
           dy_ext0 = dy_ext1 = dy_ext2 = dy0 - 1
@@ -109,17 +108,14 @@ class OpenSimplexNoise
               zsv_ext1 -= 1
               dz_ext1 += 1
             end
-
           else
             zsv_ext2 -= 1
             dz_ext2 += 1
           end
-
         else
           zsv_ext0 = zsv_ext1 = zsv_ext2 = zsb + 1
           dz_ext0 = dz_ext1 = dz_ext2 = dz0 - 1
         end
-
 
         if (c & 0x08) == 0
           wsv_ext0 = wsv_ext1 = wsb
@@ -130,8 +126,7 @@ class OpenSimplexNoise
           wsv_ext0 = wsv_ext1 = wsv_ext2 = wsb + 1
           dw_ext0 = dw_ext1 = dw_ext2 = dw0 - 1
         end
-
-      else # (0,0,0,0) is not one of the closest two pentachoron vertices.
+      else                # (0,0,0,0) is not one of the closest two pentachoron vertices.
         c = (a_po | b_po) # Our three extra vertices are determined by the closest two.
 
         if (c & 0x01) == 0
@@ -157,7 +152,6 @@ class OpenSimplexNoise
             ysv_ext2 -= 1
             dy_ext2 += 1
           end
-
         else
           ysv_ext0 = ysv_ext1 = ysv_ext2 = ysb + 1
           dy_ext0 = dy0 - 1 - 2 * SQUISH_CONSTANT_4D
@@ -175,13 +169,11 @@ class OpenSimplexNoise
             zsv_ext2 -= 1
             dz_ext2 += 1
           end
-
         else
           zsv_ext0 = zsv_ext1 = zsv_ext2 = zsb + 1
           dz_ext0 = dz0 - 1 - 2 * SQUISH_CONSTANT_4D
           dz_ext1 = dz_ext2 = dz0 - 1 - SQUISH_CONSTANT_4D
         end
-
 
         if (c & 0x08) == 0
           wsv_ext0 = wsv_ext1 = wsb
@@ -246,7 +238,6 @@ class OpenSimplexNoise
         attn4 *= attn4
         value += attn4 * attn4 * extrapolate(xsb + 0, ysb + 0, zsb + 0, wsb + 1, dx4, dy4, dz4, dw4)
       end
-
     elsif in_sum >= 3 # We're inside the pentachoron (4-Simplex) at (1,1,1,1)
       # Determine which two of (1,1,1,0), (1,1,0,1), (1,0,1,1), (0,1,1,1) are closest.
       a_po = 0x0E
@@ -272,7 +263,7 @@ class OpenSimplexNoise
       # Now we determine the three lattice pos not part of the pentachoron that may contribute.
       # This depends on the closest two pentachoron vertices, including (0,0,0,0)
       uins = 4 - in_sum
-      if uins < a_score || uins < b_score # (1,1,1,1) is one of the closest two pentachoron vertices.
+      if uins < a_score || uins < b_score   # (1,1,1,1) is one of the closest two pentachoron vertices.
         c = b_score < a_score ? b_po : a_po # Our other closest vertex is the closest out of a and b.
 
         if (c & 0x01) != 0
@@ -295,7 +286,6 @@ class OpenSimplexNoise
             ysv_ext0 += 1
             dy_ext0 -= 1
           end
-
         else
           ysv_ext0 = ysv_ext1 = ysv_ext2 = ysb
           dy_ext0 = dy_ext1 = dy_ext2 = dy0 - 4 * SQUISH_CONSTANT_4D
@@ -312,12 +302,10 @@ class OpenSimplexNoise
               zsv_ext1 += 1
               dz_ext1 -= 1
             end
-
           else
             zsv_ext2 += 1
             dz_ext2 -= 1
           end
-
         else
           zsv_ext0 = zsv_ext1 = zsv_ext2 = zsb
           dz_ext0 = dz_ext1 = dz_ext2 = dz0 - 4 * SQUISH_CONSTANT_4D
@@ -332,8 +320,7 @@ class OpenSimplexNoise
           wsv_ext0 = wsv_ext1 = wsv_ext2 = wsb
           dw_ext0 = dw_ext1 = dw_ext2 = dw0 - 4 * SQUISH_CONSTANT_4D
         end
-
-      else # (1,1,1,1) is not one of the closest two pentachoron vertices.
+      else                # (1,1,1,1) is not one of the closest two pentachoron vertices.
         c = (a_po & b_po) # Our three extra vertices are determined by the closest two.
 
         if (c & 0x01) != 0
@@ -359,7 +346,6 @@ class OpenSimplexNoise
             ysv_ext1 += 1
             dy_ext1 -= 1
           end
-
         else
           ysv_ext0 = ysv_ext1 = ysv_ext2 = ysb
           dy_ext0 = dy0 - 2 * SQUISH_CONSTANT_4D
@@ -377,7 +363,6 @@ class OpenSimplexNoise
             zsv_ext1 += 1
             dz_ext1 -= 1
           end
-
         else
           zsv_ext0 = zsv_ext1 = zsv_ext2 = zsb
           dz_ext0 = dz0 - 2 * SQUISH_CONSTANT_4D
@@ -451,7 +436,6 @@ class OpenSimplexNoise
         attn0 *= attn0
         value += attn0 * attn0 * extrapolate(xsb + 1, ysb + 1, zsb + 1, wsb + 1, dx0, dy0, dz0, dw0)
       end
-
     elsif in_sum <= 2 # We're inside the first dispentachoron (Rectified 4-Simplex)
       a_is_bigger_side = true
       b_is_bigger_side = true
@@ -484,7 +468,6 @@ class OpenSimplexNoise
           a_score = score
           a_po = 0x09
         end
-
       else
         score = yins + zins
         if a_score >= b_score && score > b_score
@@ -613,7 +596,6 @@ class OpenSimplexNoise
             wsv_ext2 += 2
             dw_ext2 -= 2
           end
-
         else # Both closest pos on the smaller side
           # One of the two extra pos is (0,0,0,0)
           xsv_ext2 = xsb
@@ -648,7 +630,6 @@ class OpenSimplexNoise
               ysv_ext1 -= 1
               dy_ext1 += 1
             end
-
           else
             ysv_ext0 = ysv_ext1 = ysb + 1
             dy_ext0 = dy_ext1 = dy0 - 1 - SQUISH_CONSTANT_4D
@@ -664,12 +645,10 @@ class OpenSimplexNoise
               zsv_ext1 -= 1
               dz_ext1 += 1
             end
-
           else
             zsv_ext0 = zsv_ext1 = zsb + 1
             dz_ext0 = dz_ext1 = dz0 - 1 - SQUISH_CONSTANT_4D
           end
-
 
           if (c & 0x08) == 0
             wsv_ext0 = wsb
@@ -681,7 +660,6 @@ class OpenSimplexNoise
             dw_ext0 = dw_ext1 = dw0 - 1 - SQUISH_CONSTANT_4D
           end
         end
-
       else # One po on each "side"
         if a_is_bigger_side
           c1 = a_po
@@ -712,7 +690,6 @@ class OpenSimplexNoise
             ysv_ext1 -= 1
             dy_ext1 += 1
           end
-
         else
           ysv_ext0 = ysv_ext1 = ysb + 1
           dy_ext0 = dy_ext1 = dy0 - 1 - SQUISH_CONSTANT_4D
@@ -728,7 +705,6 @@ class OpenSimplexNoise
             zsv_ext1 -= 1
             dz_ext1 += 1
           end
-
         else
           zsv_ext0 = zsv_ext1 = zsb + 1
           dz_ext0 = dz_ext1 = dz0 - 1 - SQUISH_CONSTANT_4D
@@ -877,7 +853,6 @@ class OpenSimplexNoise
         attn10 *= attn10
         value += attn10 * attn10 * extrapolate(xsb + 0, ysb + 0, zsb + 1, wsb + 1, dx10, dy10, dz10, dw10)
       end
-
     else # We're inside the second dispentachoron (Rectified 4-Simplex)
       a_is_bigger_side = true
       b_is_bigger_side = true
@@ -910,7 +885,6 @@ class OpenSimplexNoise
           a_score = score
           a_po = 0x06
         end
-
       else
         score = yins + zins
         if a_score <= b_score && score < b_score
@@ -1031,7 +1005,6 @@ class OpenSimplexNoise
             wsv_ext2 -= 2
             dw_ext2 += 2
           end
-
         else # Both closest pos on the smaller side
           # One of the two extra pos is (1,1,1,1)
           xsv_ext2 = xsb + 1
@@ -1065,7 +1038,6 @@ class OpenSimplexNoise
               ysv_ext1 += 1
               dy_ext1 -= 1
             end
-
           else
             ysv_ext0 = ysv_ext1 = ysb
             dy_ext0 = dy_ext1 = dy0 - 3 * SQUISH_CONSTANT_4D
@@ -1081,12 +1053,10 @@ class OpenSimplexNoise
               zsv_ext1 += 1
               dz_ext1 -= 1
             end
-
           else
             zsv_ext0 = zsv_ext1 = zsb
             dz_ext0 = dz_ext1 = dz0 - 3 * SQUISH_CONSTANT_4D
           end
-
 
           if (c & 0x08) != 0
             wsv_ext0 = wsb + 1
@@ -1098,7 +1068,6 @@ class OpenSimplexNoise
             dw_ext0 = dw_ext1 = dw0 - 3 * SQUISH_CONSTANT_4D
           end
         end
-
       else # One po on each "side"
         if a_is_bigger_side
           c1 = a_po
@@ -1129,7 +1098,6 @@ class OpenSimplexNoise
             ysv_ext1 += 1
             dy_ext1 -= 1
           end
-
         else
           ysv_ext0 = ysv_ext1 = ysb
           dy_ext0 = dy_ext1 = dy0 - 3 * SQUISH_CONSTANT_4D
@@ -1145,7 +1113,6 @@ class OpenSimplexNoise
             zsv_ext1 += 1
             dz_ext1 -= 1
           end
-
         else
           zsv_ext0 = zsv_ext1 = zsb
           dz_ext0 = dz_ext1 = dz0 - 3 * SQUISH_CONSTANT_4D

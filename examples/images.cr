@@ -5,9 +5,9 @@ require "../src/open-simplex-noise"
 class ExmapleImageGenerator
   include StumpyPNG
 
-  WIDTH = 512
-  HEIGHT = 512
-  FRAMES = 48
+  WIDTH        =  512
+  HEIGHT       =  512
+  FRAMES       =   48
   FEATURE_SIZE = 24.0
 
   def initialize(seed : Int64 = 0_i64)

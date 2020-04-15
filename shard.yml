@@ -6,8 +6,6 @@ authors:
   - Julien Reichardt <contact@jrei.ch>
 
 development_dependencies:
-  ameba:
-    github: crystal-ameba/ameba
   stumpy_png:
     github: stumpycr/stumpy_png
 
