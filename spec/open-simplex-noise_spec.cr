@@ -1,4 +1,5 @@
-require "./spec_helper"
+require "spec"
+require "../src/open-simplex-noise"
 
 describe OpenSimplexNoise do
   it "can be instantiated without providing a seed" do
