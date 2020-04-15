@@ -1,3 +1,5 @@
+require "./constants"
+
 class OpenSimplexNoise
   private def extrapolate(xsb : Int32, ysb : Int32, dx : Float64, dy : Float64)
     index = @perm[(@perm[xsb & 0xFF] + ysb) & 0xFF] & 0x0E
@@ -6,7 +8,7 @@ class OpenSimplexNoise
   end
 
   # Generate 2D OpenSimplex noise from X,Y coordinates.
-  def generate(x : Float64, y : Float64)
+  def generate(x : Float64, y : Float64) : Float64
     # Place input coordinates onto grid.
     stretch_offset = (x + y) * STRETCH_CONSTANT_2D
     xs = x + stretch_offset

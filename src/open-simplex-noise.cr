@@ -1,7 +1,9 @@
-require "./open-simplex-noise/*"
+require "./2d"
+require "./3d"
+require "./4d"
 
 class OpenSimplexNoise
-  def initialize(seed : Int64 = DEFAULT_SEED)
+  def initialize(seed : Int64 = 0_i64)
     # Initiate the class and generate permutation arrays from a seed number.
 
     # Initializes the class using a permutation array generated from a 64-bit seed.

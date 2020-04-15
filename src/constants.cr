@@ -10,8 +10,6 @@ class OpenSimplexNoise
   private NORM_CONSTANT_3D = 103
   private NORM_CONSTANT_4D =  30
 
-  private DEFAULT_SEED = 0_i64
-
   # Gradients for 2D. They approximate the directions to the
   # vertices of an octagon from the center.
   private GRADIENTS_2D = [
