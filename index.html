@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Crystal Docs 0.33.0">
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/doc.js"></script>
+
+<svg class="hidden">
+  <symbol id="octicon-link" viewBox="0 0 16 16">
+    <path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path>
+  </symbol>
+</svg>
+
+  <meta id="repository-name" content="github.com/j8r/crystal-open-simplex-noise">
+  <title>README - github.com/j8r/crystal-open-simplex-noise</title>
+  <script type="text/javascript">
+  CrystalDoc.base_path = "";
+  </script>
+</head>
+<body>
+
+<div class="sidebar">
+  <div class="sidebar-header">
+    <div class="search-box">
+      <input type="search" class="search-input" placeholder="Search..." spellcheck="false" aria-label="Search">
+    </div>
+
+    <div class="repository-links">
+      <a href="index.html">README</a>
+    </div>
+  </div>
+
+  <div class="search-results" class="hidden">
+    <ul class="search-list"></ul>
+  </div>
+
+  <div class="types-list">
+    <ul>
+  
+  <li class=" " data-id="github.com/j8r/crystal-open-simplex-noise/OpenSimplexNoise" data-name="opensimplexnoise">
+      <a href="OpenSimplexNoise.html">OpenSimplexNoise</a>
+      
+    </li>
+  
+</ul>
+
+  </div>
+</div>
+
+
+<div class="main-content">
+<h1><a id="open-simplex-noise" class="anchor" href="#open-simplex-noise">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Open Simplex Noise</h1>
+
+<p><a href="https://cloud.drone.io/j8r/crystal-open-simplex-noise" target="_blank"><img src="https://cloud.drone.io/api/badges/j8r/crystal-open-simplex-noise/status.svg" alt="Build Status"/></a></p>
+
+<p>This is an implementation of 2D, 3D, and 4D open simplex noise in crystal.</p>
+
+<p>Original work by <a href="https://github.com/doughsay/crystal-open-simplex-noise" target="_blank">doughsay</a>.</p>
+
+<h2><a id="installation" class="anchor" href="#installation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Installation</h2>
+
+<p>Add this to your application's <code>shard.yml</code>:</p>
+
+<pre><code class="language-yml">dependencies:
+  open-simplex-noise:
+    github: j8r/crystal-open-simplex-noise</code></pre>
+
+<h2><a id="usage" class="anchor" href="#usage">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Usage</h2>
+
+<pre><code class="language-crystal"><span class="k">require</span> <span class="s">&quot;open-simplex-noise&quot;</span></code></pre>
+
+<p>Instantiate a noise generator using an <code>Int64</code> seed:</p>
+
+<pre><code class="language-crystal">noise <span class="o">=</span> <span class="t">OpenSimplexNoise</span>.<span class="k">new</span>(<span class="n">12345_i64</span>)</code></pre>
+
+<p>Use the <code>generate</code> method, passing in either 2, 3, or 4 <code>Float64</code>s to generate noise:</p>
+
+<pre><code class="language-crystal">noise.generate(<span class="n">1.0</span>, <span class="n">2.0</span>) <span class="c">#=&gt; -0.08284024020120388</span></code></pre>
+
+<h2><a id="documentation" class="anchor" href="#documentation">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Documentation</h2>
+
+<p>https://j8r.github.io/crystal-open-simplex-noise</p>
+
+<h2><a id="examples" class="anchor" href="#examples">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Examples</h2>
+
+<p>2D Noise:</p>
+
+<p><img src="examples/output/noise2d.png" alt="2d-noise"/></p>
+
+<p>3D Noise (2D slice):</p>
+
+<p><img src="examples/output/noise3d.png" alt="3d-noise"/></p>
+
+<p>4D Noise (2D slice):</p>
+
+<p><img src="examples/output/noise4d.png" alt="3d-noise"/></p>
+
+<h2><a id="credits" class="anchor" href="#credits">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>Credits</h2>
+
+<p><a href="https://github.com/doughsay" target="_blank">doughsay</a> Chris Dosé - original creator</p>
+
+<p>This is mostly just a transliteration of the Python version from here: https://github.com/lmas/opensimplex, which itself is a transliteration of Kurt Spencer's original code (released to the public domain).</p>
+
+<h2><a id="license" class="anchor" href="#license">
+  <svg class="octicon-link" aria-hidden="true">
+    <use href="#octicon-link"/>
+  </svg>
+</a>License</h2>
+
+<p><a href="LICENSE.md" target="_blank">MIT</a></p>
+</div>
+</body>
+</html>
