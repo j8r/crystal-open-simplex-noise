@@ -1,66 +1,32 @@
 require "stumpy_png"
-
 require "../src/open-simplex-noise"
 
-class ExmapleImageGenerator
-  include StumpyPNG
-
-  WIDTH        =  512
-  HEIGHT       =  512
-  FRAMES       =   48
-  FEATURE_SIZE = 24.0
+struct ExmapleImageGenerator
+  property width : Int32 = 512
+  property height : Int32 = 512
+  property frames : Int32 = 48
+  property feature_size : Float64 = 24.0
 
   def initialize(seed : Int64 = 0_i64)
-    @noise = OpenSimplexNoise.new(seed)
+    @noise = OpenSimplexNoise.new seed
   end
 
-  def generate_images
-    generate_2d_image
-    generate_3d_image
-    generate_4d_image
-  end
-
-  def generate_2d_image
-    puts "Generating 2D image..."
-    canvas = Canvas.new(WIDTH, HEIGHT)
-    (0...HEIGHT).each do |y|
-      (0...WIDTH).each do |x|
-        value = @noise.generate(x / FEATURE_SIZE, y / FEATURE_SIZE)
+  def generate_image(name : String, *coordinates)
+    puts "Generating #{name} image..."
+    canvas = StumpyPNG::Canvas.new @width, @height
+    (0...@height).each do |y|
+      (0...@width).each do |x|
+        value = @noise.generate(x / @feature_size, y / @feature_size, *coordinates)
         gray = ((value + 1) * 128).to_i
-        color = RGBA.from_rgb_n(gray, gray, gray, 8)
+        color = StumpyPNG::RGBA.from_rgb_n(gray, gray, gray, 8)
         canvas[x, y] = color
       end
     end
-    StumpyPNG.write(canvas, "examples/output/noise2d.png")
-  end
-
-  def generate_3d_image
-    puts "Generating 3D image..."
-    canvas = Canvas.new(WIDTH, HEIGHT)
-    (0...HEIGHT).each do |y|
-      (0...WIDTH).each do |x|
-        value = @noise.generate(x / FEATURE_SIZE, y / FEATURE_SIZE, 0.0)
-        gray = ((value + 1) * 128).to_i
-        color = RGBA.from_rgb_n(gray, gray, gray, 8)
-        canvas[x, y] = color
-      end
-    end
-    StumpyPNG.write(canvas, "examples/output/noise3d.png")
-  end
-
-  def generate_4d_image
-    puts "Generating 4D image..."
-    canvas = Canvas.new(WIDTH, HEIGHT)
-    (0...HEIGHT).each do |y|
-      (0...WIDTH).each do |x|
-        value = @noise.generate(x / FEATURE_SIZE, y / FEATURE_SIZE, 0.0, 0.0)
-        gray = ((value + 1) * 128).to_i
-        color = RGBA.from_rgb_n(gray, gray, gray, 8)
-        canvas[x, y] = color
-      end
-    end
-    StumpyPNG.write(canvas, "examples/output/noise4d.png")
+    StumpyPNG.write(canvas, "examples/output/#{name}.png")
   end
 end
 
-ExmapleImageGenerator.new.generate_images
+generator = ExmapleImageGenerator.new
+generator.generate_image "noise2d"
+generator.generate_image "noise3d", 0.0
+generator.generate_image "noise4d", 0.0, 0.0
